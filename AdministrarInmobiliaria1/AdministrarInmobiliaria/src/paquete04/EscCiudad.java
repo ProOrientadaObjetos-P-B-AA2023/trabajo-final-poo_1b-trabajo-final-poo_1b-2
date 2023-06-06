@@ -14,15 +14,15 @@ public class EscCiudad {
 
     public EscCiudad(String nombreArc) {
         nombreArchivo = nombreArc;
-        establecerLista();
+        setLista();
         try {
             salida = new ObjectOutputStream(
                     new FileOutputStream("datos/" + nombreArchivo));
 
-            if (obtenerLista().size() > 0) {
-                for (int i = 0; i < obtenerLista().size(); i++) {
-                    establecerRegistro(obtenerLista().get(i));
-                    establecerSalida();
+            if (getLista().size() > 0) {
+                for (int i = 0; i < getLista().size(); i++) {
+                    setRegistro(getLista().get(i));
+                    setSalida();
                 }
             }
         } catch (IOException ioException) {
@@ -30,15 +30,15 @@ public class EscCiudad {
         }
     }
 
-    public void establecerNombreArchivo(String n) {
+    public void setrNombreArchivo(String n) {
         nombreArchivo = n;
     }
 
-    public void establecerRegistro(Ciudad c) {
+    public void setRegistro(Ciudad c) {
         registro = c;
     }
 
-    public void establecerSalida() {
+    public void setSalida() {
         try {
             salida.writeObject(registro);
         } catch (IOException ex) {
@@ -46,22 +46,22 @@ public class EscCiudad {
         }
     }
 
-    public void establecerLista() {
+    public void setLista() {
         LecCiudad l = new LecCiudad(
-                obtenerNombreArchivo());
-        l.establecerListaCiudades();
-        lista = l.obtenerListaCiudades();
+                getNombreArchivo());
+        l.setListaCiudades();
+        lista = l.getListaCiudades();
     }
 
-    public String obtenerNombreArchivo() {
+    public String getNombreArchivo() {
         return nombreArchivo;
     }
 
-    public ArrayList<Ciudad> obtenerLista() {
+    public ArrayList<Ciudad> getLista() {
         return lista;
     }
 
-    public ObjectOutputStream obtenerSalida() {
+    public ObjectOutputStream getSalida() {
         return salida;
     }
 

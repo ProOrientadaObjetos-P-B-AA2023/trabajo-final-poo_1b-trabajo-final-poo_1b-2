@@ -27,14 +27,14 @@ public class LecDepartamento {
         }
     }
 
-    public void establecerNombreArchivo(String n) {
+    public void setNombreArchivo(String n) {
         nombreArchivo = n;
     }
 
-    public void establecerListaDepartamentos() {
+    public void setListaDepartamentos() {
 
         departamentos = new ArrayList<>();
-        File f = new File("datos/" + obtenerNombreArchivo());
+        File f = new File("datos/" + getNombreArchivo());
         if (f.exists()) {
 
             while (true) {
@@ -58,19 +58,19 @@ public class LecDepartamento {
 
     }
 
-    public ArrayList<Departamento> obtenerListaDepartamentos() {
+    public ArrayList<Departamento> getListaDepartamentos() {
         return departamentos;
     }
 
-    public String obtenerNombreArchivo() {
+    public String getNombreArchivo() {
         return nombreArchivo;
     }
 
     @Override
     public String toString() {
         String cadena = "\nLista de Departamentos:\n";
-        for (int i = 0; i < obtenerListaDepartamentos().size(); i++) {
-            Departamento d = obtenerListaDepartamentos().get(i);
+        for (int i = 0; i < getListaDepartamentos().size(); i++) {
+            Departamento d = getListaDepartamentos().get(i);
             cadena = String.format(
                     "%s==============================================\n"
                     + "Propietario: %s %s\n"

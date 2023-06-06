@@ -14,15 +14,15 @@ public class EscProp {
 
     public EscProp(String nombreArc) {
         nombreArchivo = nombreArc;
-        establecerLista();
+        setLista();
         try {
             salida = new ObjectOutputStream(
                     new FileOutputStream("datos/" + nombreArchivo));
 
-            if (obtenerLista().size() > 0) {
-                for (int i = 0; i < obtenerLista().size(); i++) {
-                    establecerRegistro(obtenerLista().get(i));
-                    establecerSalida();
+            if (getLista().size() > 0) {
+                for (int i = 0; i < getLista().size(); i++) {
+                    setRegistro(getLista().get(i));
+                    setSalida();
                 }
             }
         } catch (IOException ioException) {
@@ -30,15 +30,15 @@ public class EscProp {
         }
     }
 
-    public void establecerNombreArchivo(String n) {
+    public void setNombreArchivo(String n) {
         nombreArchivo = n;
     }
 
-    public void establecerRegistro(Propietario p) {
+    public void setRegistro(Propietario p) {
         registro = p;
     }
 
-    public void establecerSalida() {
+    public void setSalida() {
         try {
             salida.writeObject(registro);
         } catch (IOException ex) {
@@ -46,22 +46,22 @@ public class EscProp {
         }
     }
 
-    public void establecerLista() {
+    public void setLista() {
         LecProp l = new LecProp(
-                obtenerNombreArchivo());
-        l.establecerListaPropietarios();
-        lista = l.obtenerListaPropietarios();
+                getNombreArchivo());
+        l.setListaPropietarios();
+        lista = l.getListaPropietarios();
     }
 
-    public String obtenerNombreArchivo() {
+    public String getNombreArchivo() {
         return nombreArchivo;
     }
 
-    public ArrayList<Propietario> obtenerLista() {
+    public ArrayList<Propietario> getLista() {
         return lista;
     }
 
-    public ObjectOutputStream obtenerSalida() {
+    public ObjectOutputStream getSalida() {
         return salida;
     }
 

@@ -27,14 +27,14 @@ public class LecCiudad {
         }
     }
 
-    public void establecerNombreArchivo(String n) {
+    public void setNombreArchivo(String n) {
         nombreArchivo = n;
     }
 
-    public void establecerListaCiudades() {
+    public void setListaCiudades() {
         
         ciudades = new ArrayList<>();
-        File f = new File("datos/" + obtenerNombreArchivo());
+        File f = new File("datos/" + getNombreArchivo());
         if (f.exists()) {
 
             while (true) {
@@ -56,11 +56,11 @@ public class LecCiudad {
 
     }
 
-    public ArrayList<Ciudad> obtenerListaCiudades() {
+    public ArrayList<Ciudad> getListaCiudades() {
         return ciudades;
     }
     
-        public Ciudad obtenerCiudad(String nombreCiudad) {
+        public Ciudad getCiudad(String nombreCiudad) {
         for (int i = 0; i < ciudades.size(); i++) {
             if (ciudades.get(i).getNombre()
                     .equals(nombreCiudad)) {
@@ -70,15 +70,15 @@ public class LecCiudad {
         return null;     
     }
 
-    public String obtenerNombreArchivo() {
+    public String getNombreArchivo() {
         return nombreArchivo;
     }
 
     @Override
     public String toString() {
         String cadena = "\nLista de Ciudades:\n\n";
-        for (int i = 0; i < obtenerListaCiudades().size(); i++) {
-            Ciudad c = obtenerListaCiudades().get(i);
+        for (int i = 0; i < getListaCiudades().size(); i++) {
+            Ciudad c = getListaCiudades().get(i);
             cadena = String.format("%s----\nCiudad %s\n"
                     + "Provincia: %s\n----\n", 
                     cadena,

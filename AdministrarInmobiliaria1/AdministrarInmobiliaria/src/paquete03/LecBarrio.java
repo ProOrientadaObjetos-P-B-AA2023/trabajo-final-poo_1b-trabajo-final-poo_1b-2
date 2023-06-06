@@ -27,14 +27,14 @@ public class LecBarrio {
         }
     }
 
-    public void establecerNombreArchivo(String n) {
+    public void setNombreArchivo(String n) {
         nombreArchivo = n;
     }
 
-    public void establecerListaBarrios() {
+    public void setListaBarrios() {
         
         barrios = new ArrayList<>();
-        File f = new File("datos/" + obtenerNombreArchivo());
+        File f = new File("datos/" + getNombreArchivo());
         if (f.exists()) {
 
             while (true) {
@@ -56,11 +56,11 @@ public class LecBarrio {
 
     }
 
-    public ArrayList<Barrio> obtenerListaBarrios() {
+    public ArrayList<Barrio> getListaBarrios() {
         return barrios;
     }
     
-        public Barrio obtenerBarrio(String nombreBarrio) {
+        public Barrio getBarrio(String nombreBarrio) {
         for (int i = 0; i < barrios.size(); i++) {
             if (barrios.get(i).getNombre()
                     .equals(nombreBarrio)) {
@@ -70,15 +70,15 @@ public class LecBarrio {
         return null;     
     }
 
-    public String obtenerNombreArchivo() {
+    public String getNombreArchivo() {
         return nombreArchivo;
     }
 
     @Override
     public String toString() {
         String cadena = "\nLista de Barrios:\n\n";
-        for (int i = 0; i < obtenerListaBarrios().size(); i++) {
-            Barrio b = obtenerListaBarrios().get(i);
+        for (int i = 0; i < getListaBarrios().size(); i++) {
+            Barrio b = getListaBarrios().get(i);
             cadena = String.format("%s----\nBarrio %s\n"
                     + "Referencia: %s\n----\n", 
                     cadena,

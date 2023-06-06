@@ -27,14 +27,14 @@ public class LecProp {
         }
     }
 
-    public void establecerNombreArchivo(String n) {
+    public void setNombreArchivo(String n) {
         nombreArchivo = n;
     }
 
-    public void establecerListaPropietarios() {
+    public void setListaPropietarios() {
         
         propietarios = new ArrayList<>();
-        File f = new File("datos/" + obtenerNombreArchivo());
+        File f = new File("datos/" + getNombreArchivo());
         if (f.exists()) {
 
             while (true) {
@@ -56,11 +56,11 @@ public class LecProp {
 
     }
 
-    public ArrayList<Propietario> obtenerListaPropietarios() {
+    public ArrayList<Propietario> getListaPropietarios() {
         return propietarios;
     }
     
-        public Propietario obtenerPropietraio(String id) {
+        public Propietario getPropietraio(String id) {
         for (int i = 0; i < propietarios.size(); i++) {
             if (propietarios.get(i).getIdentificacion()
                     .equals(id)) {
@@ -70,15 +70,15 @@ public class LecProp {
         return null;     
     }
 
-    public String obtenerNombreArchivo() {
+    public String getNombreArchivo() {
         return nombreArchivo;
     }
 
     @Override
     public String toString() {
         String cadena = "\nLista de Propietarios:\n\n";
-        for (int i = 0; i < obtenerListaPropietarios().size(); i++) {
-            Propietario p = obtenerListaPropietarios().get(i);
+        for (int i = 0; i < getListaPropietarios().size(); i++) {
+            Propietario p = getListaPropietarios().get(i);
             cadena = String.format("%s----\nPropietario - %s\n"
                     + "Nombres: %s\n"
                     + "Apellidos: %s\n----\n", cadena,

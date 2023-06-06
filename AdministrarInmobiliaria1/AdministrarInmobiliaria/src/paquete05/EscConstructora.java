@@ -14,15 +14,15 @@ public class EscConstructora {
 
     public EscConstructora(String nombreArc) {
         nombreArchivo = nombreArc;
-        establecerLista();
+        setLista();
         try {
             salida = new ObjectOutputStream(
                     new FileOutputStream("datos/"+ nombreArchivo));
 
-            if (obtenerLista().size() > 0) {
-                for (int i = 0; i < obtenerLista().size(); i++) {
-                    establecerRegistro(obtenerLista().get(i));
-                    establecerSalida();
+            if (getLista().size() > 0) {
+                for (int i = 0; i < getLista().size(); i++) {
+                    setRegistro(getLista().get(i));
+                    setSalida();
                 }
             }
         } catch (IOException ioException) {
@@ -30,15 +30,15 @@ public class EscConstructora {
         }
     }
 
-    public void establecerNombreArchivo(String n) {
+    public void setNombreArchivo(String n) {
         nombreArchivo = n;
     }
 
-    public void establecerRegistro(Constructora c) {
+    public void setRegistro(Constructora c) {
         registro = c;
     }
 
-    public void establecerSalida() {
+    public void setSalida() {
         try {
             salida.writeObject(registro);
         } catch (IOException ex) {
@@ -46,22 +46,22 @@ public class EscConstructora {
         }
     }
 
-    public void establecerLista() {
+    public void setLista() {
         LecConstructora l = new LecConstructora(
-                obtenerNombreArchivo());
-        l.establecerListaConstructoras();
-        lista = l.obtenerListaConstructoras();
+                getNombreArchivo());
+        l.setListaConstructoras();
+        lista = l.getListaConstructoras();
     }
 
-    public String obtenerNombreArchivo() {
+    public String getNombreArchivo() {
         return nombreArchivo;
     }
 
-    public ArrayList<Constructora> obtenerLista() {
+    public ArrayList<Constructora> getLista() {
         return lista;
     }
 
-    public ObjectOutputStream obtenerSalida() {
+    public ObjectOutputStream getSalida() {
         return salida;
     }
 

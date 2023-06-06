@@ -14,15 +14,15 @@ public class EscCasa {
 
     public EscCasa(String nombreArc) {
         nombreArchivo = nombreArc;
-        establecerLista();
+        setLista();
         try {
             salida = new ObjectOutputStream(
                     new FileOutputStream("datos/" + nombreArchivo));
 
-            if (obtenerLista().size() > 0) {
-                for (int i = 0; i < obtenerLista().size(); i++) {
-                    establecerRegistro(obtenerLista().get(i));
-                    establecerSalida();
+            if (getLista().size() > 0) {
+                for (int i = 0; i < getLista().size(); i++) {
+                    setRegistro(getLista().get(i));
+                    setSalida();
                 }
             }
         } catch (IOException ioException) {
@@ -30,15 +30,15 @@ public class EscCasa {
         }
     }
 
-    public void establecerNombreArchivo(String n) {
+    public void setNombreArchivo(String n) {
         nombreArchivo = n;
     }
 
-    public void establecerRegistro(Casa c) {
+    public void setRegistro(Casa c) {
         registro = c;
     }
 
-    public void establecerSalida() {
+    public void setSalida() {
         try {
             salida.writeObject(registro);
         } catch (IOException ex) {
@@ -46,22 +46,22 @@ public class EscCasa {
         }
     }
 
-    public void establecerLista() {
+    public void setLista() {
         LecCasa l = new LecCasa(
-                obtenerNombreArchivo());
-        l.establecerListaCasas();
-        lista = l.obtenerListaCasas();
+                getNombreArchivo());
+        l.setListaCasas();
+        lista = l.getListaCasas();
     }
 
-    public String obtenerNombreArchivo() {
+    public String getNombreArchivo() {
         return nombreArchivo;
     }
 
-    public ArrayList<Casa> obtenerLista() {
+    public ArrayList<Casa> getLista() {
         return lista;
     }
 
-    public ObjectOutputStream obtenerSalida() {
+    public ObjectOutputStream getSalida() {
         return salida;
     }
 

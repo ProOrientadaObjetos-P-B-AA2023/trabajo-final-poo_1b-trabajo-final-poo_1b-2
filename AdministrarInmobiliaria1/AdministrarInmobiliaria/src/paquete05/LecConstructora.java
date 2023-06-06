@@ -27,14 +27,14 @@ public class LecConstructora {
         }
     }
 
-    public void establecerNombreArchivo(String n) {
+    public void setNombreArchivo(String n) {
         nombreArchivo = n;
     }
 
-    public void establecerListaConstructoras() {
+    public void setListaConstructoras() {
         
         constructoras = new ArrayList<>();
-        File f = new File("datos/" + obtenerNombreArchivo());
+        File f = new File("datos/" + getNombreArchivo());
         if (f.exists()) {
 
             while (true) {
@@ -56,11 +56,11 @@ public class LecConstructora {
 
     }
 
-    public ArrayList<Constructora> obtenerListaConstructoras() {
+    public ArrayList<Constructora> getListaConstructoras() {
         return constructoras;
     }
     
-    public Constructora obtenerConstructora(int id) {
+    public Constructora getConstructora(int id) {
         for (int i = 0; i < constructoras.size(); i++) {
             if (constructoras.get(i).getIdEmpresa() == id) {
                 return constructoras.get(i);
@@ -69,15 +69,15 @@ public class LecConstructora {
         return null;     
     }
 
-    public String obtenerNombreArchivo() {
+    public String getNombreArchivo() {
         return nombreArchivo;
     }
 
     @Override
     public String toString() {
         String cadena = "\nLista de Constructoras:\n\n";
-        for (int i = 0; i < obtenerListaConstructoras().size(); i++) {
-            Constructora c = obtenerListaConstructoras().get(i);
+        for (int i = 0; i < getListaConstructoras().size(); i++) {
+            Constructora c = getListaConstructoras().get(i);
             cadena = String.format("%s----\nConstructora - %s\n"
                     + "ID empresa: %d\n----\n", cadena,
                     c.getNombreConstructora(),

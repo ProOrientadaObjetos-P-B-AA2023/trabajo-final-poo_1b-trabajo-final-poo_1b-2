@@ -27,14 +27,14 @@ public class LecCasa {
         }
     }
 
-    public void establecerNombreArchivo(String n) {
+    public void setNombreArchivo(String n) {
         nombreArchivo = n;
     }
 
-    public void establecerListaCasas() {
+    public void setListaCasas() {
 
         casas = new ArrayList<>();
-        File f = new File("datos/" + obtenerNombreArchivo());
+        File f = new File("datos/" + getNombreArchivo());
         if (f.exists()) {
 
             while (true) {
@@ -58,19 +58,19 @@ public class LecCasa {
 
     }
 
-    public ArrayList<Casa> obtenerListaCasas() {
+    public ArrayList<Casa> getListaCasas() {
         return casas;
     }
 
-    public String obtenerNombreArchivo() {
+    public String getNombreArchivo() {
         return nombreArchivo;
     }
 
     @Override
     public String toString() {
         String cadena = "\nLista de Casas:\n";
-        for (int i = 0; i < obtenerListaCasas().size(); i++) {
-            Casa c = obtenerListaCasas().get(i);
+        for (int i = 0; i < getListaCasas().size(); i++) {
+            Casa c = getListaCasas().get(i);
             cadena = String.format(
                     "%s==============================================\n"
                     + "Propietario: %s %s\n"

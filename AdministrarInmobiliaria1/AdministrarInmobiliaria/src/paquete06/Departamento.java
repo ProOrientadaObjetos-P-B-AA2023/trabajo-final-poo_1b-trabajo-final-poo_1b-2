@@ -112,10 +112,6 @@ public class Departamento implements Serializable{
         this.constructora = constructora;
     }
 
-    public double obtenerCostoFinal() {
-        return costoFinal;
-    }
-
     public void calcularCostoFinal() {
         costoFinal = (nroMetroCuadrado * precioMetroCuadrado) 
                 + (alicuotaMensual * 12);
